@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "trappedmc-block-calculator",
+	"version": "${version}",
+	"name": "TrappedMC Block Calculator",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/trappedmc-block-calculator/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"tmc.block_calculator.TrappedMCBlockCalculator"
+		],
+		"client": [
+			"tmc.block_calculator.client.TrappedMCBlockCalculatorClient"
+		]
+	},
+	"mixins": [
+		"trappedmc-block-calculator.mixins.json",
+		{
+			"config": "trappedmc-block-calculator.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
