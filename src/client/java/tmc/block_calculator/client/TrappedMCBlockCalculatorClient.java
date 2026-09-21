@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tmc.block_calculator.client.config.ModConfig;
 import tmc.block_calculator.client.keybind.PriceModeKeyBinding;
+import tmc.block_calculator.client.render.SellValueOverlay;
 import tmc.block_calculator.client.session.ServerSessionState;
 
 public class TrappedMCBlockCalculatorClient implements ClientModInitializer {
@@ -25,6 +26,8 @@ public class TrappedMCBlockCalculatorClient implements ClientModInitializer {
 
 		PriceModeKeyBinding.register();
 		ClientTickEvents.END_CLIENT_TICK.register(PriceModeKeyBinding::tick);
+
+		SellValueOverlay.register();
 	}
 
 	public static Identifier id(String path) {

@@ -22,6 +22,12 @@
             "tmc.block_calculator.client.compat.TrappedMCModMenuIntegration"
         ]
     },
+    "mixins": [
+        {
+            "config": "trappedmc-block-calculator.client.mixins.json",
+            "environment": "client"
+        }
+    ],
     "depends": {
         "fabricloader": ">=0.19.5",
         "minecraft": "~26.1.2",
