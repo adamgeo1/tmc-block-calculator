@@ -3,7 +3,7 @@
 	"package": "tmc.block_calculator.client.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"client": [
-		"ExampleClientMixin"
+		"AbstractContainerScreenAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

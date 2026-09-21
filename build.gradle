@@ -4,11 +4,14 @@ plugins {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven {
+		name = 'ShedanielMaven'
+		url = 'https://maven.shedaniel.me/'
+	}
+	maven {
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
 }
 
 loom {
@@ -29,6 +32,13 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// Config screen (reachable from Mod Menu) for editing the sellable-items list and settings.
+	// Client-only: this Loom version (1.18.x) remaps any dependency jar containing a
+	// fabric.mod.json automatically, regardless of configuration name, so no special
+	// "modImplementation" prefix is needed here (unlike older Loom versions/tutorials).
+	clientImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	clientImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 }
 
 processResources {

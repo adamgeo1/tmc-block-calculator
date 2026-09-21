@@ -1,0 +1,17 @@
+{
+    "text.autoconfig.trappedmc-block-calculator.title": "TrappedMC Block Calculator",
+    "text.autoconfig.trappedmc-block-calculator.option.serverAllowlistRegex": "Server Allowlist Regex",
+    "text.autoconfig.trappedmc-block-calculator.option.priceMode": "Price Mode",
+    "text.autoconfig.trappedmc-block-calculator.option.tooltipPosition": "Tooltip Position",
+    "text.autoconfig.trappedmc-block-calculator.option.tooltipEnabled": "Tooltip Enabled",
+    "text.autoconfig.trappedmc-block-calculator.option.backgroundOpacityPercent": "Background Opacity (%)",
+    "text.autoconfig.trappedmc-block-calculator.option.sellableItems": "Sellable Items",
+    "text.autoconfig.trappedmc-block-calculator.option.priceMode.X1": "1x",
+    "text.autoconfig.trappedmc-block-calculator.option.priceMode.X1_15": "1.15x",
+    "text.autoconfig.trappedmc-block-calculator.option.priceMode.X1_3": "1.3x",
+    "text.autoconfig.trappedmc-block-calculator.option.tooltipPosition.LEFT": "Left",
+    "text.autoconfig.trappedmc-block-calculator.option.tooltipPosition.RIGHT": "Right",
+    "key.category.trappedmc-block-calculator.main": "TrappedMC Block Calculator",
+    "key.trappedmc-block-calculator.cycle_price_mode": "Cycle Sell Price Mode",
+    "key.trappedmc-block-calculator.toggle_tooltip": "Toggle Tooltip"
+}
