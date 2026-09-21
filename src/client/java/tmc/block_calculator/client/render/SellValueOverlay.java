@@ -28,7 +28,8 @@ import java.util.Locale;
 public final class SellValueOverlay {
 	private static final int PANEL_MARGIN = 4;
 	private static final int LINE_HEIGHT = 10;
-	private static final int TEXT_COLOR = 0xFFFFFF;
+	// Full ARGB (opaque alpha byte set) - 0xFFFFFF alone has a zero alpha byte and renders invisible.
+	private static final int TEXT_COLOR = 0xFFFFFFFF;
 	private static final int BACKGROUND_COLOR = 0xC0101010;
 
 	private SellValueOverlay() {
