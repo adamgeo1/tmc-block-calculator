@@ -1,7 +1,7 @@
 package tmc.block_calculator.client.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import net.minecraft.world.item.Item;
+import tmc.block_calculator.client.pricing.SellableItemKey;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.Map;
  */
 public final class SellableItemsCache {
 	private static List<String> cachedSourceLines = Collections.emptyList();
-	private static Map<Item, Double> cached = Collections.emptyMap();
+	private static Map<SellableItemKey, Double> cached = Collections.emptyMap();
 
 	private SellableItemsCache() {
 	}
 
-	public static Map<Item, Double> get() {
+	public static Map<SellableItemKey, Double> get() {
 		List<String> currentLines = AutoConfig.getConfigHolder(ModConfig.class).getConfig().sellableItems;
 		if (!currentLines.equals(cachedSourceLines)) {
 			cachedSourceLines = List.copyOf(currentLines);

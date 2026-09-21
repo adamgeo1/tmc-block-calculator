@@ -14,6 +14,7 @@ import tmc.block_calculator.client.config.TooltipPosition;
 import tmc.block_calculator.client.inventory.InventoryScope;
 import tmc.block_calculator.client.mixin.AbstractContainerScreenAccessor;
 import tmc.block_calculator.client.pricing.PriceCalculator;
+import tmc.block_calculator.client.pricing.SellableItemKey;
 import tmc.block_calculator.client.session.ServerSessionState;
 
 import java.text.NumberFormat;
@@ -96,7 +97,13 @@ public final class SellValueOverlay {
 	}
 
 	private static String formatLine(PriceCalculator.LineItem line, NumberFormat currencyFormat) {
-		String name = line.item().getName(new ItemStack(line.item())).getString();
-		return line.count() + "x " + name + " - $" + currencyFormat.format(line.totalValue());
+		return line.count() + "x " + displayName(line.key()) + " - $" + currencyFormat.format(line.totalValue());
+	}
+
+	private static String displayName(SellableItemKey key) {
+		if (!key.customName().isEmpty()) {
+			return key.customName();
+		}
+		return key.item().getName(new ItemStack(key.item())).getString();
 	}
 }

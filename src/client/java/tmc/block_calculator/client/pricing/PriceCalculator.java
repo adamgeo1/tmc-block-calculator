@@ -1,6 +1,5 @@
 package tmc.block_calculator.client.pricing;
 
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
@@ -17,28 +16,28 @@ public final class PriceCalculator {
 	private PriceCalculator() {
 	}
 
-	public record LineItem(Item item, int count, double totalValue) {
+	public record LineItem(SellableItemKey key, int count, double totalValue) {
 	}
 
 	public record PricingResult(List<LineItem> lines, double grandTotal) {
 	}
 
-	public static PricingResult calculate(List<ItemStack> stacks, Map<Item, Double> sellable, double multiplier) {
-		Map<Item, Integer> counts = new HashMap<>();
+	public static PricingResult calculate(List<ItemStack> stacks, Map<SellableItemKey, Double> sellable, double multiplier) {
+		Map<SellableItemKey, Integer> counts = new HashMap<>();
 		for (ItemStack stack : stacks) {
 			if (stack.isEmpty()) {
 				continue;
 			}
-			Item item = stack.getItem();
-			if (!sellable.containsKey(item)) {
+			SellableItemKey key = SellableItemKey.of(stack);
+			if (!sellable.containsKey(key)) {
 				continue;
 			}
-			counts.merge(item, stack.getCount(), Integer::sum);
+			counts.merge(key, stack.getCount(), Integer::sum);
 		}
 
 		List<LineItem> lines = new ArrayList<>();
 		double total = 0;
-		for (Map.Entry<Item, Double> entry : sellable.entrySet()) {
+		for (Map.Entry<SellableItemKey, Double> entry : sellable.entrySet()) {
 			int count = counts.getOrDefault(entry.getKey(), 0);
 			if (count == 0) {
 				continue;
