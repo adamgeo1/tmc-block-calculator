@@ -1,3 +1,5 @@
 {
-    "text.autoconfig.trappedmc-block-calculator.title": "TrappedMC Block Calculator"
+    "text.autoconfig.trappedmc-block-calculator.title": "TrappedMC Block Calculator",
+    "key.category.trappedmc-block-calculator.main": "TrappedMC Block Calculator",
+    "key.trappedmc-block-calculator.cycle_price_mode": "Cycle Sell Price Mode"
 }
