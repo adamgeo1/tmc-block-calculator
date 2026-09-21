@@ -13,26 +13,19 @@ import tmc.block_calculator.client.config.ModConfig;
 import tmc.block_calculator.client.session.ServerSessionState;
 
 /**
- * A single rebindable key (default unbound) that cycles the active {@link tmc.block_calculator.client.config.PriceMode}.
- * Only responds while {@link ServerSessionState} is enabled. Each press persists the new mode via
- * Cloth Config's config holder; a small synchronous JSON write per press, negligible given human
- * key-press frequency.
- *
- * <p>Vanilla suppresses every {@link KeyMapping}'s click/held state entirely while any screen has
- * focus (the same mechanism that stops WASD movement while a chest is open) - only a couple of
- * hardcoded vanilla keys are exempt. So {@link #tick} (which polls {@code consumeClick()}) only
- * ever fires with no screen open; while a screen IS open, {@link #register} listens for the raw
- * key event via Fabric's screen-scoped keyboard hook instead.
+ * A single rebindable key (default unbound) that toggles the tooltip on/off entirely. Mirrors
+ * {@link PriceModeKeyBinding}'s dual tick+screen-scoped registration so it also works while a
+ * screen has focus.
  */
-public final class PriceModeKeyBinding {
+public final class TooltipToggleKeyBinding {
 	private static KeyMapping keyMapping;
 
-	private PriceModeKeyBinding() {
+	private TooltipToggleKeyBinding() {
 	}
 
 	public static void register() {
 		keyMapping = new KeyMapping(
-				"key.trappedmc-block-calculator.cycle_price_mode",
+				"key.trappedmc-block-calculator.toggle_tooltip",
 				GLFW.GLFW_KEY_UNKNOWN,
 				TrappedMCBlockCalculatorClient.KEY_CATEGORY
 		);
@@ -41,7 +34,7 @@ public final class PriceModeKeyBinding {
 		ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) ->
 				ScreenKeyboardEvents.afterKeyPress(screen).register((s, keyEvent) -> {
 					if (ServerSessionState.isEnabled() && keyMapping.matches(keyEvent)) {
-						cycleMode();
+						toggle();
 					}
 				}));
 	}
@@ -51,14 +44,14 @@ public final class PriceModeKeyBinding {
 			return;
 		}
 		while (keyMapping.consumeClick()) {
-			cycleMode();
+			toggle();
 		}
 	}
 
-	private static void cycleMode() {
+	private static void toggle() {
 		ConfigHolder<ModConfig> holder = AutoConfig.getConfigHolder(ModConfig.class);
 		ModConfig config = holder.getConfig();
-		config.priceMode = config.priceMode.next();
+		config.tooltipEnabled = !config.tooltipEnabled;
 		holder.save();
 	}
 }

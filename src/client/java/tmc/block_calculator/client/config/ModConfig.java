@@ -2,6 +2,7 @@ package tmc.block_calculator.client.config;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 import java.util.List;
 
@@ -12,6 +13,11 @@ public class ModConfig implements ConfigData {
 	public PriceMode priceMode = PriceMode.X1;
 
 	public TooltipPosition tooltipPosition = TooltipPosition.RIGHT;
+
+	public boolean tooltipEnabled = true;
+
+	@ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+	public int backgroundOpacityPercent = 75;
 
 	public List<String> sellableItems = DefaultItemsLoader.loadAsEntries();
 }
