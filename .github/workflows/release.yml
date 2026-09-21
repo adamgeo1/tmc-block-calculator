@@ -1,0 +1,38 @@
+# Build the mod jar and attach it to a GitHub Release. Runs automatically when a
+# release is published, and can also be run manually against an existing release
+# (Actions tab -> release -> Run workflow) if you need to backfill one.
+
+name: release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag to upload the jar to'
+        required: true
+
+jobs:
+  upload-jar:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'microsoft'
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+      - name: build
+        run: ./gradlew build
+      - name: upload jar to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ inputs.tag || github.event.release.tag_name }}" build/libs/*.jar --clobber
