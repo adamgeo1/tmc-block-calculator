@@ -17,12 +17,17 @@
     "entrypoints": {
         "client": [
             "tmc.block_calculator.client.TrappedMCBlockCalculatorClient"
+        ],
+        "modmenu": [
+            "tmc.block_calculator.client.compat.TrappedMCModMenuIntegration"
         ]
     },
     "depends": {
         "fabricloader": ">=0.19.5",
         "minecraft": "~26.1.2",
         "java": ">=25",
-        "fabric-api": "*"
+        "fabric-api": "*",
+        "cloth-config": "*",
+        "modmenu": "*"
     }
 }
