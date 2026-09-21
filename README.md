@@ -1,6 +1,7 @@
 # TrappedMC Block Calculator
 
->[!NOTE] Intended for use on [TrappedMC](https://trappedmc.com/)
+>[!NOTE]
+>Intended for use on [TrappedMC](https://trappedmc.com/)
 
 This mod adds a toggleable overlay to inventory screens to calculate the `/sellall` values for all the sellable items in the inventory. Values are gotten from the `/sellallfilter` menu in the server.
 
