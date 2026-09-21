@@ -13,22 +13,12 @@
     },
     "license": "CC0-1.0",
     "icon": "assets/trappedmc-block-calculator/icon.png",
-    "environment": "*",
+    "environment": "client",
     "entrypoints": {
-        "main": [
-            "tmc.block_calculator.TrappedMCBlockCalculator"
-        ],
         "client": [
             "tmc.block_calculator.client.TrappedMCBlockCalculatorClient"
         ]
     },
-    "mixins": [
-        "trappedmc-block-calculator.mixins.json",
-        {
-            "config": "trappedmc-block-calculator.client.mixins.json",
-            "environment": "client"
-        }
-    ],
     "depends": {
         "fabricloader": ">=0.19.5",
         "minecraft": "~26.1.2",
