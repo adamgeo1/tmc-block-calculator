@@ -12,7 +12,7 @@ public class ModConfig implements ConfigData {
 
 	public PriceMode priceMode = PriceMode.X1;
 
-	public TooltipPosition tooltipPosition = TooltipPosition.RIGHT;
+	public TooltipPosition tooltipPosition = TooltipPosition.LEFT;
 
 	public boolean tooltipEnabled = true;
 
